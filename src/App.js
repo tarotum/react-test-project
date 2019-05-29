@@ -5,7 +5,7 @@ import List from "./components/List";
 import genData from "./utils/genData";
 import sliceData from "./utils/sliceData";
 
-const response = genData(10, 3);
+const response = genData(5, 3);
 // Slice array of response data if contains more then 100 items
 const data = sliceData(response.data, 100);
 

@@ -6,22 +6,22 @@ const ToogleList = Component => {
     constructor(props) {
       super(props);
 
-      this.toogle = () => {
-        this.setState(state => ({
-          isOpen: !state.isOpen
+      this.set = value => {
+        this.setState(() => ({
+          isOpen: value
         }));
       };
 
       this.state = {
         isOpen: false,
-        toogle: this.toogle
+        set: this.set
       };
     }
 
     render() {
       return (
         <ToogleContext.Provider value={this.state}>
-          <Component {...this.props} />
+          <Component {...this.props} isOpen={this.state.isOpen} />
         </ToogleContext.Provider>
       );
     }
