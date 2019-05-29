@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ToogleContext from "../../ToogleContext";
 import ToogleList from "../ToogleList";
+
 import Item from "../Item";
 import sliceData from "../../utils/sliceData";
 
@@ -24,19 +25,21 @@ const ListGroup = props => {
       {({ set }) => {
         return (
           <>
-            <Item
-              name={item.name}
-              hasChildren={hasChildren(item)}
-              level={level}
-              toogle={() => {
-                if (hasChildren(item)) {
-                  setMode(!mode);
-                  if (level === 0) set(true);
-                } else {
-                  set(false);
-                }
-              }}
-            />
+            {item.name && (
+              <Item
+                name={item.name}
+                hasChildren={hasChildren(item)}
+                level={level}
+                toogle={() => {
+                  if (hasChildren(item)) {
+                    setMode(!mode);
+                    if (level === 0) set(true);
+                  } else {
+                    set(false);
+                  }
+                }}
+              />
+            )}
 
             {hasChildren(item) &&
               mode &&

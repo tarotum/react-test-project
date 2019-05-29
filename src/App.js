@@ -1,20 +1,32 @@
 import React from "react";
+import { graphql } from "react-apollo";
+import gql from "graphql-tag";
+
 import "./App.css";
 import List from "./components/List";
 
-import genData from "./utils/genData";
-import sliceData from "./utils/sliceData";
+const GET_DATA = gql`
+  query getData {
+    continents {
+      name
+      children: countries {
+        name
+        children: languages {
+          name
+        }
+      }
+    }
+  }
+`;
 
-const response = genData(5, 3);
-// Slice array of response data if contains more then 100 items
-const data = sliceData(response.data, 100);
-
-function App() {
+function App({ data: { loading, error, continents } }) {
   return (
     <div className="App">
-      <List list={data} level={0} />
+      {loading && <div>loading</div>}
+      {error && global.console.log(error)}
+      {continents && <List list={continents} level={0} />}
     </div>
   );
 }
 
-export default App;
+export default graphql(GET_DATA)(App);
