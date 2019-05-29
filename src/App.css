@@ -1,0 +1,8 @@
+.App {
+  max-height: 80vh;
+  overflow-y: auto;
+  max-width: 450px;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 5vh;
+}

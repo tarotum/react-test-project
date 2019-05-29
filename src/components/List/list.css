@@ -1,0 +1,13 @@
+.list {
+  position: relative;
+}
+.list:after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  border-right: 1px dotted #222;
+  bottom: 0;
+  left: 1em;
+  z-index: -1;
+}
